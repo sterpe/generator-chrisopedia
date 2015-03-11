@@ -1,0 +1,16 @@
+language: node_js
+git:
+  depth: 10
+node_js:
+  - "0.12"
+before_install:
+  - rvm use 2.0.0 --fuzzy
+  - export GEMDIR=$(rvm gemdir)
+  - "export TRAVIS_COMMIT_MSG=\"$(git log --format=%B --no-merges -n 1)\""
+install:
+  - npm install -g grunt-cli
+notifications:
+  slack: insert_slack_key
+  webhooks:
+    - http://insert_travis_webhook_url
+
